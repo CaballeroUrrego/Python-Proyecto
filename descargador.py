@@ -79,7 +79,7 @@ ventana.geometry("360x740")  # Tamaño tipo pantalla móvil
 ventana.configure(bg=fondo)
 ventana.resizable(False, False)
 
-tk.Label(ventana, text="📥 Downloader Universal",
+tk.Label(ventana, text="Sebastian Urrego",
          font=("Helvetica", 16, "bold"), bg=fondo, fg=acento).pack(pady=15)
 
 frame = tk.Frame(ventana, bg=borde, padx=15, pady=15, bd=0, relief="flat")
