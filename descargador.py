@@ -148,3 +148,4 @@ estado_label.pack(pady=10)
 
 # Iniciar el bucle principal de la aplicación
 ventana.mainloop()
+#Modificar git
