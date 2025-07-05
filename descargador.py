@@ -7,7 +7,7 @@ from tkinter import messagebox
 def detectar_plataforma(link):
     if "tiktok.com" in link:
         return "tiktok"
-    elif "facebook.com" in link or "fb.watch" in link:
+    elif "facebook.com" in link or "fb.watch" in link or "facebook.com/stories/" in link:
         return "facebook"
     elif "instagram.com" in link:
         return "instagram"
@@ -52,18 +52,17 @@ def descargar():
     # Configurar parámetros según plataforma y formato seleccionado
     if plataforma == "tiktok":
         if formato == "musica":
-            # Extraer solo audio en formato MP3
             comando += ["-x", "--audio-format", "mp3"]
         else:
-            # Descargar el video en la mejor calidad disponible
             comando += ["-f", "best"]
     elif plataforma in ["facebook", "instagram", "youtube"]:
         if formato == "musica":
-            # Extraer solo audio en formato MP3
             comando += ["-x", "--audio-format", "mp3"]
         else:
-            # Combinar el mejor video con el mejor audio disponible
             comando += ["-f", "bestvideo+bestaudio/best"]
+        # Si es Facebook, agregar cookies
+        if plataforma == "facebook":
+            comando += ["--cookies", "cookies.txt"]
     else:
         messagebox.showerror("Error", "❌ Plataforma no soportada.")
         return
@@ -81,7 +80,7 @@ def descargar():
         
         # Actualizar estado a completado
         estado.set("✅ Descarga completada.")
-        estado_label.config(fg="#00ff88")  # Color verde
+        estado_label.config(fg="#f6ff00")  # Color verde
     except subprocess.CalledProcessError as e:
         # Mostrar mensaje de error si falla la descarga
         estado.set("❌ Error en la descarga.")
@@ -148,4 +147,4 @@ estado_label.pack(pady=10)
 
 # Iniciar el bucle principal de la aplicación
 ventana.mainloop()
-#Modificar git
+# Modificar git# Modificar git
